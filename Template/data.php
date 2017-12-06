@@ -16,7 +16,7 @@
 	<thead>
 		<tr>
 	<?php 
-		$target_table = "Coach";
+		$target_table = "Team";
 	// configure the table column names
 		$q = "SHOW columns FROM $target_table";
 		$result = mysqli_query($bbal_dbc, $q);
