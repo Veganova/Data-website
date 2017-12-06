@@ -1,29 +1,35 @@
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <script>
-      $(function () {
-
-        $('#insertform').on('submit', function (e) {
-
-          e.preventDefault();
-
-          $.ajax({
-            type: 'post',
-            url: 'index.php?page=3',
-            data: $('#insertform').serialize(),
-            success: function () {
-              	var iframe = document.getElementById('data_window');
-				iframe.src = iframe.src;
-            }
-          });
-
-        });
-
-      });
+      // $(function () {
+// 
+        // $('#insertform').on('submit', function (e) {
+// 
+          // e.preventDefault();
+// 
+          // $.ajax({
+            // type: 'post',
+            // url: 'index.php?page=3',
+            // data: $('#insertform').serialize(),
+            // success: function () {
+              	// var iframe = document.getElementById('data_window');
+				// // iframe.src = "index.php?page=3";
+            // }
+          // });
+// 
+        // });
+// 
+      // });
       
       
 $(document).ready(function(){
 	$( "#target" ).keypress(function( e ) {
-		var table_names = ['Team', 'Coach', 'GameStats'];
+		var table_names = [
+		['Team', 'Team Name', 'Team Location'],
+		['Coach', "First Name", "Last Name", "Number of Wins", "Number of Loses", "Team"],
+		['Player', 'First Name', 'Last Name', 'Height', 'Age', 'Player ID', 'Team'],
+		['Game', "Type", "Game Number", "Year", "Home Team", "Away Team"],
+		['Contract', 'Season', 'Length', 'Salary', 'Team', 'PlayerID', 'Active?']];
+		
 		
 		if(window.event) { // IE                    
 	      keynum = e.keyCode;
@@ -37,10 +43,17 @@ $(document).ready(function(){
 			
     	console.log("You pressed a key inside the input field"+val);
     	for (var i = 0; i < table_names.length; i++) {
-    		if (table_names[i] === val) {
+    		if (table_names[i][0] === val) {
     			console.log("match!");
     			var d = document.getElementById('edit');
-    			d.innerHTML = "";
+    			var total = "";
+    			for (var j = 1; j < table_names[i].length;j++) {
+    				var val = "'" + "values" + (j-1) + "'";
+    				total += '<label for = ' + val + '>' + table_names[i][j] + '</label>'
+    				total += '<input class = "form-control" type="text" name=' + val + 'id=' + val + '>'; 	
+    			}
+    			d.innerHTML = total;
+    			break;
     		}
     	}
 	});
@@ -49,19 +62,19 @@ $(document).ready(function(){
 
 </script>
 
-<form id="insertform">
+<form id="insertform" action = "index.php?page=3" method="post">
 	<div class = "form-group">
 		<label for = "table">Table</label>
-		<input id="target" class = "form-control" type="text" name="table" id="table" placeholder="Table">
+		<input id="target" class = "form-control" type="text" name="table" id="table">
 	</div>
 	<div class = "form-group">
-		<label for = "values">Values</label>
+		
 		<div id = "edit">
-		<input class = "form-control" type="text" name="values" id="values" placeholder="Values">
+			
 		</div>
 	</div>
 	<button id="submit" type="submit" class="btn btn-default">Submit</button>
 	<input type="hidden" name="submitted" value="1">
 </form>
 
-<iframe id="data_window" src="index.php?page=3&asthetic=0" height="200" width="1000" frameBorder="0"></iframe>
+<!-- <iframe id="data_window" src="index.php?page=3&asthetic=0" height="200" width="1000" frameBorder="0"></iframe> -->

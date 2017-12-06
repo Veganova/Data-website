@@ -1,22 +1,50 @@
 <table class="table table-striped">
+	
 	<?php
-				
+	
+		
+		$target_table = "Coach";
+		
 		if(isset($_POST['submitted']) == 1){
-			$q = "INSERT INTO $_POST[table] VALUES $_POST[values];";
-			$r = mysqli_query($bbal_dbc, $q);
 			
-			if($r) {
-				echo "<p>Page added successfully.</p>";
-			} else {
-				echo "<p>Page could not be added - ".mysqli_error($bbal_dbc);
-				echo '<p>'.$q.'</p>';
-			}	
+			// insert data into table
+			$target_table = $_POST['table'];
+			
+			
+			$total = "(";
+			$val = 0;
+			$full = 0;
+			while(isset($_POST['values'.$val]) == 1) {
+				$l = $_POST['values'.$val];
+				$total = $total.'"'.$l.'", ';
+				$val = $val + 1;
+				
+				if (strlen($l) > 0) {
+					$full = $full + 1;	
+				}
+			}
+			
+			$total = substr($total, 0, strlen($total) - 2);
+			$total = $total.");";
+			if ($full > 0) {
+				$q = "INSERT INTO $target_table VALUES $total;";
+				$r = mysqli_query($bbal_dbc, $q);
+				
+				//printing status
+				if($r) {
+					echo "<p>Page added successfully.</p>";
+				} else {
+					echo "<p>Page could not be added - ".mysqli_error($bbal_dbc);
+					echo '<p>'.$q.'</p>';
+				}	
+			}
 		}
+		
 	?>
 	<thead>
 		<tr>
 	<?php 
-		$target_table = "Team";
+		
 	// configure the table column names
 		$q = "SHOW columns FROM $target_table";
 		$result = mysqli_query($bbal_dbc, $q);
