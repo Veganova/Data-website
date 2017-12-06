@@ -12,7 +12,7 @@
             // data: $('#insertform').serialize(),
             // success: function () {
               	// var iframe = document.getElementById('data_window');
-				// // iframe.src = "index.php?page=3";
+				// // iframe.src += '';
             // }
           // });
 // 
@@ -28,7 +28,9 @@ $(document).ready(function(){
 		['Coach', "First Name", "Last Name", "Number of Wins", "Number of Loses", "Team"],
 		['Player', 'First Name', 'Last Name', 'Height', 'Age', 'Player ID', 'Team'],
 		['Game', "Type", "Game Number", "Year", "Home Team", "Away Team"],
-		['Contract', 'Season', 'Length', 'Salary', 'Team', 'PlayerID', 'Active?']];
+		['Contract', 'Season', 'Length', 'Salary', 'Team', 'PlayerID', 'Active?'],
+		['Stadium', 'Season Built', 'Capacity', 'City', 'Team'],
+		['GameStats', 'Game Number', 'Player ID', 'Minutes', 'Points', 'fg', 'fga', 'Rebounds', 'Assists', 'Steals', 'Blocks', 'Teams']];
 		
 		
 		if(window.event) { // IE                    

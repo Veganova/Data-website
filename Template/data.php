@@ -1,6 +1,4 @@
-<table class="table table-striped">
-	
-	<?php
+<?php
 	
 		
 		$target_table = "Coach";
@@ -41,6 +39,9 @@
 		}
 		
 	?>
+
+
+<table class="table table-striped">
 	<thead>
 		<tr>
 	<?php 
