@@ -13,8 +13,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
-		
-		<div id = "wrap"><!-- puts the footer at the bottom -->
+		<?php
+		if ($asthetic == 1) {?>
+			<div id = "wrap"><!-- puts the footer at the bottom -->
 			
 			<?php include(D_TEMPLATE.'/navigation.php'); ?>
 				
@@ -34,13 +35,22 @@
 					$nav = mysqli_fetch_assoc($r);
 					include('template/'.$nav['title'].'.php');
 				?> 
+				</div>
 			</div>
 			
-		<!--<iframe src="index.php" height="1000" width="1000"></iframe>-->
-		 
-		</div>
+			<?php include (D_TEMPLATE.'/footer.php'); ?>
+		<?php	
+		} else {?>
+			<?php 
+				$q = "SELECT * FROM pages where id = ".$pageid;
+				$r = mysqli_query($dbc, $q);
+			
+				$nav = mysqli_fetch_assoc($r);
+				include('template/'.$nav['title'].'.php');
+			?>
+		<?php
+		}?>
 		
-		<?php include (D_TEMPLATE.'/footer.php'); ?>
 		
 	</body>
 	

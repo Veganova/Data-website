@@ -11,7 +11,8 @@
             url: 'index.php?page=3',
             data: $('#insertform').serialize(),
             success: function () {
-              alert('form was submitted');
+              	var iframe = document.getElementById('data_window');
+				iframe.src = iframe.src;
             }
           });
 
@@ -32,3 +33,5 @@
 	<button id="submit" type="submit" class="btn btn-default">Submit</button>
 	<input type="hidden" name="submitted" value="1">
 </form>
+
+<iframe id="data_window" src="index.php?page=3&asthetic=0" height="200" width="1000" frameBorder="0"></iframe>

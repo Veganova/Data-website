@@ -27,4 +27,11 @@
 		height: 60px;
 		background-color: #f5f5f5;
 	}
+	
+	iframe {
+	  height: 300px;
+	  width: 80%;
+	  resize: both;
+	  overflow: auto;
+	}
 </style>

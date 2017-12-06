@@ -27,6 +27,12 @@ else {
 	$pageid = 1; //sets $pageid to 1 or the home page
 }
 
+if (isset($_GET['asthetic'])) {
+	$asthetic = $_GET['asthetic']; 
+}
+else {
+	$asthetic = 1; //sets to true default
+}
 #page setup
 
 $page = data_page($dbc, $pageid);
