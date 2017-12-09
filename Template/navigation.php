@@ -6,8 +6,15 @@
 				$q = "SELECT * FROM pages";
 				$r = mysqli_query($dbc, $q);
 				
+				$id = 1;
 				while($nav = mysqli_fetch_assoc($r)) {
-					echo '<li><a href="?page='.$nav['id'].'">'.$nav['title'].'</a></li>';
+					if ($id == $pageid) {
+						echo '<li class = "active"><a href="?page='.$nav['id'].'">'.$nav['title'].'</a></li>';
+					} else {
+						echo '<li><a href="?page='.$nav['id'].'">'.$nav['title'].'</a></li>';
+					}
+					
+					$id = $id + 1;
 				}
 			?>
 		

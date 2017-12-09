@@ -20,17 +20,20 @@
 // 
       // });
       
-      
+   
 $(document).ready(function(){
-	$( "#target" ).keypress(function( e ) {
-		var table_names = [
+	var table_names = [
 		['Team', 'Team Name', 'Team Location'],
 		['Coach', "First Name", "Last Name", "Number of Wins", "Number of Loses", "Team"],
-		['Player', 'First Name', 'Last Name', 'Height', 'Age', 'Player ID', 'Team'],
-		['Game', "Type", "Game Number", "Year", "Home Team", "Away Team"],
-		['Contract', 'Season', 'Length', 'Salary', 'Team', 'PlayerID', 'Active?'],
+		['Player', 'First Name', 'Last Name', 'Height', 'Age', 'Team'],
+		['Game', "Type", "Year", "Home Team", "Away Team"],
+		['Contract', 'Season Signed', 'Contract Length', 'Salary', 'Team', 'PlayerID', 'Active?'],
 		['Stadium', 'Season Built', 'Capacity', 'City', 'Team'],
-		['GameStats', 'Game Number', 'Player ID', 'Minutes', 'Points', 'fg', 'fga', 'Rebounds', 'Assists', 'Steals', 'Blocks', 'Teams']];
+		['GameStats', 'Game Number', 'Player ID', 'Minutes', 'Points', 'fg', 'fga', 'Rebounds', 'Assists', 'Steals', 'Blocks', 'Teams'],
+		['Season', 'mvp', 'Champion']];
+	
+	
+	$( "#target" ).keypress(function( e ) {
 		
 		
 		if(window.event) { // IE                    
@@ -48,7 +51,7 @@ $(document).ready(function(){
     		if (table_names[i][0] === val) {
     			console.log("match!");
     			var d = document.getElementById('edit');
-    			var total = "";
+    			var total = "<hr><h3>Insert:</h3>";
     			for (var j = 1; j < table_names[i].length;j++) {
     				var val = "'" + "values" + (j-1) + "'";
     				total += '<label for = ' + val + '>' + table_names[i][j] + '</label>'
@@ -60,9 +63,33 @@ $(document).ready(function(){
     	}
 	});
 });
-
+// $("#options").load(function(){
+	// var table_names = [
+		// ['Team', 'Team Name', 'Team Location'],
+		// ['Coach', "First Name", "Last Name", "Number of Wins", "Number of Loses", "Team"],
+		// ['Player', 'First Name', 'Last Name', 'Height', 'Age', 'Player ID', 'Team'],
+		// ['Game', "Type", "Game Number", "Year", "Home Team", "Away Team"],
+		// ['Contract', 'Season', 'Length', 'Salary', 'Team', 'PlayerID', 'Active?'],
+		// ['Stadium', 'Season Built', 'Capacity', 'City', 'Team'],
+		// ['GameStats', 'Game Number', 'Player ID', 'Minutes', 'Points', 'fg', 'fga', 'Rebounds', 'Assists', 'Steals', 'Blocks', 'Teams'],
+		// ['Season', 'mvp', 'Champion']];
+	// var options = "";
+	// for (var i = 0; i < table_names.length; i++) {
+		// if (i == table_names.length - 1) {
+			// options += table_names[i][0] + ".";
+		// }
+		// else {
+			// options += table_names[i][0] + ", ";
+		// }
+	// }
+// 	
+	// document.getElementById("#options").innerHTML = options;
+// });
 
 </script>
+
+
+<h4 id="options"></h4>
 
 <form id="insertform" action = "index.php?page=3" method="post">
 	<div class = "form-group">

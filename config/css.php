@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type = "css/text" href="sticky-footer.css">
+<link rel="stylesheet" type="text/css" href="config/tablesort.css">
+<link rel="stylesheet" type="text/css" href="config/styles.css">
+
 
 <style>
 	html,

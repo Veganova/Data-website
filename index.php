@@ -24,7 +24,6 @@
 				<h1><?php echo $page['header'];?></h1>
 				<p> <?php echo $page ['body']; ?></p>
 			</div>
-			<hr>	
 			
 			<!-- INCLUDE CORRECT FILE CONTENT-, Home = home.php-->
 			<div class = "container">
