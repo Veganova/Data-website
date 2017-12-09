@@ -14,6 +14,8 @@
 	</head>
 	<body>
 		<?php
+				
+		
 		if ($asthetic == 1) {?>
 			<div id = "wrap"><!-- puts the footer at the bottom -->
 			

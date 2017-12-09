@@ -53,6 +53,14 @@
 					// echo '<p>'.$q.'</p>';
 				}	
 			}
+			
+			
+			
+		}
+
+		if(isset($_POST['foo']) == 1) {
+			$q = $_POST['foo'];
+			$r = mysqli_query($bbal_dbc, $q);
 		}
 		echo "<h2>$target_table:</h2>";
 		
@@ -156,15 +164,27 @@
 	    var repeat = function () {
 	    	//
 	    	if (color_array[3] <= 0) {
-	    		alert('DELETE FROM ' + tbl + " WHERE " + wc);
+	    		var bar = 'DELETE FROM ' + tbl + " WHERE " + wc;
+	    		console.log(bar);
 	    		ob.innerHTML = "";
+	    		$.ajax({
+				    type: 'POST',
+				    url: 'index.php?page=3',
+				    data: { 
+				        'foo': bar
+				    },
+				    success: function(){
+				    	console.log(bar);
+				    }
+				});
 	    		ob.onmouseup();
+	    		
+	    		
 	    	} else {
 	    	
 		        t = setTimeout(repeat, start);
 		        start = (start + delta) / speedup;
-		        console.log(color_array[3]);
-		        color_array[3] = start / 100;
+		        color_array[3] = start / 100; // update alpha
 		        ob.style.color = getColorCSS(color_array);
 	        }
 	        
